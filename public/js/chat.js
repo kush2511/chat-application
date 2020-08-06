@@ -15,10 +15,10 @@ const locationMessageTemplateMy = document.querySelector("#my-location-message-t
 
 const sidebarTemplate = document.querySelector("#sidebar-template").innerHTML
 
-const {username, room, key} = Qs.parse(location.search, {ignoreQueryPrefix: true})
+const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
 //console.log(username);
 
-socket.emit("join", {username,room,key}, (error) => {
+socket.emit("join", {username,room}, (error) => {
     if(error){
         alert(error);
         location.href = "/";
@@ -26,20 +26,20 @@ socket.emit("join", {username,room,key}, (error) => {
 });
 
 socket.on("message", (message) =>{
-    const {username} = Qs.parse(location.search, {ignoreQueryPrefix: true})
+    //const {username} = Qs.parse(location.search, {ignoreQueryPrefix: true})
     //console.log(message);
     // console.log(username);
     // console.log(message.username);
     // console.log(username.toLowerCase() == message.username)
-    if(username.toLowerCase() == message.username){
+    if(username == message.username){
         const html = Mustache.render(messageTemplateMy, {message: message.text, createdAt : moment(message.createdAt).format("h:mm a")});
-            $messages.insertAdjacentHTML("beforeend", html);
-            autoscroll();
+        $messages.insertAdjacentHTML("beforeend", html);
+        autoscroll();
     }
-    if(username.toLowerCase() != message.username){
+    if(username != message.username){
         const html = Mustache.render(messageTemplate, {username: message.username ,message: message.text, createdAt : moment(message.createdAt).format("h:mm a")});
-            $messages.insertAdjacentHTML("beforeend", html);
-            autoscroll();
+        $messages.insertAdjacentHTML("beforeend", html);
+        autoscroll();
     }
 })
 
@@ -58,18 +58,19 @@ $messageForm.addEventListener("submit", (e) => {
         if(error){
             return alert(error);
         }
-        console.log("Delivered");
+        //console.log("Delivered");
     });
 });
 
 socket.on("locationMessage", (location) =>{
     //console.log(location);
-    if(username.toLowerCase() == location.username){
+    //console.log(username == location.username);
+    if(username == location.username){
         const html = Mustache.render(locationMessageTemplateMy, {location:location.url, createdAt : moment(location.createdAt).format("h:mm a")});
         $messages.insertAdjacentHTML("beforeend", html);
         autoscroll();
     }
-    if(username.toLowerCase() != location.username){
+    if(username != location.username){
         const html = Mustache.render(locationMessageTemplate, {username: location.username ,location:location.url, createdAt : moment(location.createdAt).format("h:mm a")});
         $messages.insertAdjacentHTML("beforeend", html);
         autoscroll();
@@ -87,7 +88,7 @@ $sendLocationButton.addEventListener("click", () => {
         //console.log(position);
         //console.log(latitude + " " + longitude);
         socket.emit("sendLocation", {latitude: position.coords.latitude, longitude: position.coords.longitude}, (message) => {
-            console.log(message);
+            //console.log(message);
             $sendLocationButton.removeAttribute("disabled");
         });
     })
@@ -114,7 +115,7 @@ const autoscroll = () => {
     const containerHeight = $messages.scrollHeight
 
     // How far have I scrolled?
-    const scrollOffset = $messages.scrollTop + visibleHeight
+    const scrollOffset = ($messages.scrollTop + visibleHeight) * 1.2;
 
     if (containerHeight - newMessageHeight <= scrollOffset) {
         $messages.scrollTop = $messages.scrollHeight

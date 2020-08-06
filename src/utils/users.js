@@ -1,19 +1,19 @@
 const users = [];
 
 const addUser = ({id, username, room}) => {
-    username = username.trim().toLowerCase();
-    room = room.trim().toLowerCase();
+    // username = username.trim().toLowerCase();
+    // room = room.trim().toLowerCase();
 
     //validate
     if(!username || !room){
         return {
-            error: "Username and Room id is required."
+            error: "Username, Room Name & Key is required."
         }
     }
 
     //Check for existing user in room
     const existingUser = users.find((user) => {
-        return user.room === room && user.username === username
+        return user.room.trim().toLowerCase() === room.trim().toLowerCase() && user.username.trim().toLowerCase() === username.trim().toLowerCase();
     });
     if(existingUser){
         return {
@@ -49,10 +49,10 @@ const getUser = (id) => {
 }
 
 const getUsersInRoom = (room) => {
-    room = room.trim().toLowerCase();
+    // room = room.trim().toLowerCase();
 
     const matchUsers = users.filter((user) => {
-        return user.room === room;
+        return user.room.trim().toLowerCase() === room.trim().toLowerCase();
     })
 
     if(!matchUsers){
@@ -75,17 +75,20 @@ module.exports = {
 // addUser({
 //     id: 1,
 //     username: "kush",
-//     room: "B"
+//     room: "B",
+//     key: "Kush"
 // })
 // addUser({
 //     id: 2,
 //     username: "raj",
-//     room: "B"
+//     room: "B",
+//     key: "Kush"
 // })
 // addUser({
 //     id: 3,
 //     username: "xyz",
-//     room: "C"
+//     room: "C",
+//     key: "Kush"
 // })
 
 // console.log(users);

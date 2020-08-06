@@ -11,10 +11,6 @@ html {
     font-size: 16px;
 }
 
-input {
-    font-size: 14px;
-}
-
 body {
     line-height: 1.4;
     color: #333333;
@@ -33,6 +29,7 @@ label {
 }
 
 input {
+    font-size: 14px;
     border: 1px solid #eeeeee;
     padding: 12px;
     outline: none;
@@ -40,12 +37,12 @@ input {
 
 button {
     cursor: pointer;
-    padding: 12px;
     background: #424242;
     border: none;
     color: white;
     font-size: 14px;
     border-radius: 25px;
+    padding: 12px 0;
     outline: none;
     transition: background .3s ease;
 }
@@ -144,7 +141,6 @@ button:disabled {
 /* Message Styles */
 
 .message {
-    margin-bottom: 15px;
     margin-left: -15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -152,6 +148,8 @@ button:disabled {
     border-radius: 10px;
     background-color:rgb(216, 216, 216);
     align-self: start;
+    position: relative;
+    left: 45px;
 }
 
 .message__name {
@@ -178,12 +176,11 @@ button:disabled {
 
 .icon{
     color: #1D1F26;
-    margin-right: 5px;
-    margin-top: 15px;
+    position: relative;
+    top: 25px;
 }
 
 .message_my {
-    margin-bottom: 15px;
     margin-left: -15px;
     padding-left: 10px;
     padding-right: 10px;
@@ -191,6 +188,8 @@ button:disabled {
     border-radius: 10px;
     background-color:rgb(216, 216, 216);
     align-self: flex-end;
+    position: relative;
+    right: 25px;
 }
 
 .message__name_my {
@@ -216,9 +215,9 @@ button:disabled {
 }
 .icon_my{
     color: #1D1F26;
-    margin-right: 5px;
-    margin-top: 15px;
     align-self: flex-end;
+    position: relative;
+    top: 25px;
 }
 /* Message Composition Styles */
 
@@ -226,7 +225,7 @@ button:disabled {
     display: flex;
     flex-shrink: 0;
     margin-top: 16px;
-    padding: 24px;
+    padding-bottom: 8px;
 }
 
 .compose form {
@@ -236,19 +235,22 @@ button:disabled {
 }
 
 .compose input {
-    border: 1px solid #eeeeee;
     width: 100%;
-    padding: 12px;
-    margin: 0 16px 0 0;
+    padding: 0 10px;
+    margin: 0 12px 0 0;
     border-radius: 25px;
-    border: 1px solid rgb(61, 61, 61);
+    border: 1.5px solid rgb(61, 61, 61);
     flex-grow: 1;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .compose button {
-    font-size: 14px;
+    font-size: 15px;
     height: 40px;
-    padding: 0 25px
+    border-radius: 50%;
+    margin-right: 2px;
+    padding: 0 13px;
 }
 
 /* Chat Sidebar Styles */
