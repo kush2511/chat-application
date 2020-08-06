@@ -62,7 +62,7 @@ button:disabled {
 /* Join Page Styles */
 
 .centered-form {
-    background: #8f8f8f;
+    background: #ffffff;
     width: 100vw;
     height: 100vh;   
     display: flex;
@@ -73,18 +73,21 @@ button:disabled {
 .centered-form__box {
     box-shadow: 0px 0px 17px 1px #1D1F26;
     background: #F7F7FA;
-    padding: 24px;
-    width: 250px;
+    padding: 25px;
+    width: 500px;
+    height: 500px;
     border-radius: 10px;
     text-align: center;
 }
 
 .centered-form button {
     width: 100%;
+    margin-top: 20px;
+    font-size: 15px;
 }
 
 .centered-form input {
-    margin-bottom: 16px;
+    margin-bottom: 25px;
     width: 100%;
     text-align: center;
     border-radius: 25px;
@@ -95,6 +98,13 @@ button:disabled {
     color: rgb(0, 137, 158);
     font-family: 'Varta', sans-serif;
     font-size: 16px;
+}
+
+.centered-form__box a{
+    color: black;
+}
+.centered-form__box a:hover{
+    color: rgba(100, 100, 100, 0.616);
 }
 
 /* Chat Page Layout */
@@ -108,7 +118,8 @@ button:disabled {
     color: white;
     background: #333744;
     width: 225px;
-    overflow-y: scroll
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* Chat styles */
@@ -126,12 +137,21 @@ button:disabled {
     overflow-y: scroll;
     font-family: 'Quicksand', sans-serif;
     color: blue;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Message Styles */
 
 .message {
-    margin-bottom: 16px;   
+    margin-bottom: 15px;
+    margin-left: -15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    background-color:rgb(216, 216, 216);
+    align-self: start;
 }
 
 .message__name {
@@ -144,13 +164,62 @@ button:disabled {
 
 .message__meta {
     color: rgba(85, 85, 85, 0.521);
-    font-size: 12px;
+    font-size: 10px;
+    padding-right: 5px;
 }
 
 .message a {
-    color: #0070CC;
+    color: #414242;
 }
 
+.message a:hover{
+    color: #5c8596;
+}
+
+.icon{
+    color: #1D1F26;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+.message_my {
+    margin-bottom: 15px;
+    margin-left: -15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    background-color:rgb(216, 216, 216);
+    align-self: flex-end;
+}
+
+.message__name_my {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 8px;
+    letter-spacing: 0.7px;
+    text-transform: capitalize;
+}
+
+.message__meta_my {
+    color: rgba(85, 85, 85, 0.521);
+    font-size: 10px;
+    padding-right: 5px;
+}
+
+.message_my a {
+    color: #414242;
+}
+
+.message_my a:hover{
+    color: #5c8596;
+}
+.icon_my{
+    color: #1D1F26;
+    margin-right: 5px;
+    margin-top: 15px;
+    align-self: flex-end;
+}
 /* Message Composition Styles */
 
 .compose {

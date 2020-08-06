@@ -16,7 +16,7 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 app.use(express.static(publicDirectoryPath));
 
 io.on("connection", (socket) => {
-    console.log("New connection!");
+    //console.log("New connection!");
 
     socket.on("join", ({username,room}, callback) => {
         const {error, user} = addUser({id: socket.id, username, room});
